@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="LightMyRoom.exe" version="1.0.0.2" publicKeyToken="93acba744a4618d2" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="LightMyRoom" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="LightMyRoom.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Opcje manifestu kontroli konta użytkownika
+          Jeśli chcesz zmienić poziom kontroli konta użytkownika systemu Windows, zastąp węzeł 
+          requestedExecutionLevel jednym z następujących.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Jeśli chcesz użyć wirtualizacji plików i rejestru do celów zgodności wstecznej, 
+         usuń węzeł requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bunifu_UI_v1.5.3.dll" size="399856">
+      <assemblyIdentity name="Bunifu_UI_v1.5.3" version="1.5.3.0" publicKeyToken="E8E24CCD28363FE9" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>1/Owo8lU/2wuYjlqdjVK+5EC6sdfdxR5s4i6zzmaRTs=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LightMyRoom.exe" size="260584">
+      <assemblyIdentity name="LightMyRoom" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>qhcPYRfJE21eS5bNZrjtpW0bqEoZPH9AjkEcr/QfSMQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="icon.ico" size="40302">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>37HU4ymf5UeZWcGg+41gGYeSnP5nfmDKbC1AbZmj7Js=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="LightMyRoom.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Resources\ledstripfet.gif" size="48465">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>eOhPnRswOa4arYkpQ658Q9cvsPKTfCBNTOEVSa/laIM=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-IDK772G\Damian" issuerKeyHash="7356cac63ae615222ef4ed213d622d2fd40063e6" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>Rl/kymi2OntNNqHTeTrWI8toZVu0Mk4oIQGGlDDMAQM=</DigestValue></Reference></SignedInfo><SignatureValue>xd6c+YkD0zgweFsi0G1Dqd6ZAGZH/rrTA6lO63gwvgNWCMNTUgCQ0gfPtLpy56o+wZMTTCWEERfXKjSRvUFJsa6o2mgg1m5L59UUKWszKsctIZ1fSmj8ll19MjM/LHQHbgNFlg2b6jcB6PiGTeiBXZyeuxfl4QjqlT9KW3vRqEw=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>9E9Vtf+11KgdoyBiFrrV/beQuusMfd2C34oRAWiMKax23QiTQG8fG8Xxdylb1n5VnS5Iv+CgW+lypZz+cA+oMK4jbQCSymG/a74zP5HQGasrgvJ7Tk9emY/MfZeIRn9mVwivpYDhotupgUp/Hr+zUDYPwoWh4alVEFrgOImLaqE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="0301cc3094860121284e32b45b6568cb23d63a79d3a1364d7b3ab668cae45f46" Description="" Url=""><as:assemblyIdentity name="LightMyRoom.exe" version="1.0.0.2" publicKeyToken="93acba744a4618d2" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-IDK772G\Damian</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>jKV6NE/tr51+5dqu3bFDU5SPHpBZN8KfBLN2o8RlwfE=</DigestValue></Reference></SignedInfo><SignatureValue>2HpftIDUCphFQPAANlYUMOkFpW1rbFMDSxspq2CmGqZcLmtkdeYnmbvvbe20F9Prjk3ZubDvOQsPLKVwAtyA881BcaPu21jwpbstklGCMncxBjAOvJrCTe4DjRB5Gsp7Bn240C6nk2qLuW0PQiy61lMjQjZ4MOZbHTi1H88xlT0=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>9E9Vtf+11KgdoyBiFrrV/beQuusMfd2C34oRAWiMKax23QiTQG8fG8Xxdylb1n5VnS5Iv+CgW+lypZz+cA+oMK4jbQCSymG/a74zP5HQGasrgvJ7Tk9emY/MfZeIRn9mVwivpYDhotupgUp/Hr+zUDYPwoWh4alVEFrgOImLaqE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB8TCCAVqgAwIBAgIQHCjRhOJVU5dEUiS7BLPFnTANBgkqhkiG9w0BAQsFADA3MTUwMwYDVQQDHiwARABFAFMASwBUAE8AUAAtAEkARABLADcANwAyAEcAXABEAGEAbQBpAGEAbjAeFw0yMDA1MTEyMDE2MjNaFw0yMTA1MTIwMjE2MjNaMDcxNTAzBgNVBAMeLABEAEUAUwBLAFQATwBQAC0ASQBEAEsANwA3ADIARwBcAEQAYQBtAGkAYQBuMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD0T1W1/7XUqB2jIGIWutX9t5C66wx93YLfihEBaIwprHbdCJNAbx8bxfF3KVvWflWdLki/4KBb6XKlnP5wD6gwriNtAJLKYb9rvjM/kdAZqyuC8ntOT16Zj8x9l4hGf2ZXCK+lgOGi26mBSn8ev7NQNg/ChaHhqVUQWuA4iYtqoQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBACFU7mzWr2cKmAsedDQ6xnnjV9/4ekmhKJbzgEKP89tuL44HM60gISE9EWT38tI6Xsrn+XRQl/8hqX8zgvemiySD3L5Unlfq/79Y84OLtomdmXq0VgP1QZOA2/mpvTPeXsR9zhSfui0mHYyII907CxMHOPSt2mFlGo4EJwc78WTq</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
