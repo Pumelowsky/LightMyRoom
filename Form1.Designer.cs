@@ -33,7 +33,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.close = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.chuj = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.conState = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.com_status_lab = new System.Windows.Forms.Label();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.wifi_btn = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -153,7 +153,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(54)))), ((int)(((byte)(64)))));
-            this.panel2.Controls.Add(this.chuj);
+            this.panel2.Controls.Add(this.conState);
             this.panel2.Controls.Add(this.com_status_lab);
             this.panel2.Controls.Add(this.bunifuCustomLabel1);
             this.panel2.Controls.Add(this.wifi_btn);
@@ -170,15 +170,15 @@
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // chuj
+            // conState
             // 
-            this.chuj.AutoSize = true;
-            this.chuj.ForeColor = System.Drawing.Color.Gainsboro;
-            this.chuj.Location = new System.Drawing.Point(73, 405);
-            this.chuj.Name = "chuj";
-            this.chuj.Size = new System.Drawing.Size(10, 13);
-            this.chuj.TabIndex = 7;
-            this.chuj.Text = " ";
+            this.conState.AutoSize = true;
+            this.conState.ForeColor = System.Drawing.Color.Gainsboro;
+            this.conState.Location = new System.Drawing.Point(73, 405);
+            this.conState.Name = "conState";
+            this.conState.Size = new System.Drawing.Size(10, 13);
+            this.conState.TabIndex = 7;
+            this.conState.Text = " ";
             // 
             // com_status_lab
             // 
@@ -1032,7 +1032,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private Bunifu.Framework.UI.BunifuFlatButton button19;
-        private Bunifu.Framework.UI.BunifuCustomLabel chuj;
+        private Bunifu.Framework.UI.BunifuCustomLabel conState;
         private Bunifu.Framework.UI.BunifuProgressBar act_col;
         private System.Windows.Forms.Panel panel3;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;

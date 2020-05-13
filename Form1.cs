@@ -65,8 +65,8 @@ namespace LightMyRoom
             g = bunifuSlider2.Value;
             b = bunifuSlider3.Value;
 
-            chuj.Text = "DISCONNECTED";
-            chuj.ForeColor = Color.Red;
+            conState.Text = "DISCONNECTED";
+            conState.ForeColor = Color.Red;
 
             act_col.ProgressColor = Color.FromArgb(r, g, b);
             modeDropdown.Select();
@@ -90,8 +90,8 @@ namespace LightMyRoom
             port.Open();
             this.SetColor(defaultColor);
             button19.Text = "DISCONNECT FROM SERIAL PORT";
-            chuj.Text = "CONNECTED";
-            chuj.ForeColor = Color.Green;
+            conState.Text = "CONNECTED";
+            conState.ForeColor = Color.Green;
             
         }
 
@@ -101,8 +101,8 @@ namespace LightMyRoom
             this.SetColor(defaultColor);
             port.Close();
             button19.Text = "CONNECT TO SERIAL PORT";
-            chuj.Text = "DISCONNECTED";
-            chuj.ForeColor = Color.Red;
+            conState.Text = "DISCONNECTED";
+            conState.ForeColor = Color.Red;
         }
 
 
@@ -110,9 +110,6 @@ namespace LightMyRoom
 
         private void SetColor(Color color)
         {
-            // Update color in the panel
-
-            // Write color to Arduino
             port.Write(new[] { color.R, color.G, color.B }, 0, 3);
         }
 
