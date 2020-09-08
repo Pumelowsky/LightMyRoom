@@ -61,6 +61,16 @@ namespace LightMyRoom.Properties {
         }
         
         /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Byte[].
+        /// </summary>
+        internal static byte[] Bunifu_UI_v1_5_3 {
+            get {
+                object obj = ResourceManager.GetObject("Bunifu_UI_v1_5_3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap cross {
@@ -106,6 +116,16 @@ namespace LightMyRoom.Properties {
         internal static System.Drawing.Bitmap logo_dlugie {
             get {
                 object obj = ResourceManager.GetObject("logo_dlugie", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap refresh {
+            get {
+                object obj = ResourceManager.GetObject("refresh", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

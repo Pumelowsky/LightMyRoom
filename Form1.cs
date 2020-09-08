@@ -16,6 +16,10 @@ using System.Windows.Forms;
 using System.Web;
 using System.Net.NetworkInformation;
 using System.IO.Ports;
+using Microsoft.Win32;
+
+using NAudio.Wave;
+using NAudio.CoreAudioApi;
 
 namespace LightMyRoom
 {
@@ -28,9 +32,9 @@ namespace LightMyRoom
         int movY;
         bool isConnected = false;
         int r = 0, b = 0, g = 0;
+        int r2 = 0, b2 = 0, g2 = 0;
         String[] ports;
         SerialPort port;
-      
 
         private Color defaultColor = Color.FromArgb(0, 0, 0);
 
@@ -61,6 +65,12 @@ namespace LightMyRoom
             g_val.Text = bunifuSlider2.Value.ToString();
             b_val.Text = bunifuSlider3.Value.ToString();
 
+            bunifuCustomLabel9.Text = bunifuSlider4.Value.ToString();
+            bunifuCustomLabel5.Text = bunifuSlider5.Value.ToString();
+            bunifuCustomLabel7.Text = bunifuSlider6.Value.ToString();
+
+            actMusic.ProgressColor = Color.FromArgb(0, 0, 0);
+
             r = bunifuSlider1.Value;
             g = bunifuSlider2.Value;
             b = bunifuSlider3.Value;
@@ -70,17 +80,16 @@ namespace LightMyRoom
 
             act_col.ProgressColor = Color.FromArgb(r, g, b);
             modeDropdown.Select();
+            MMDeviceEnumerator enumerator = new MMDeviceEnumerator();
+            var devices = enumerator.EnumerateAudioEndPoints(DataFlow.All, DeviceState.Active);
+            dropDevice.Items.AddRange(devices.ToArray());
         }
-        
+
         void getAvailableComPorts()
         {
             ports = SerialPort.GetPortNames();
         }
 
-        private void changeTheme()
-        {
-
-        }
         private void connectToArduino()
         {
             string selectedPort = comboBox1.GetItemText(comboBox1.SelectedItem);
@@ -120,6 +129,8 @@ namespace LightMyRoom
 
         private void close_Click(object sender, EventArgs e)
         {
+            if (isConnected)
+                this.SetColor(Color.FromArgb(0, 0, 0));
             System.Windows.Forms.Application.Exit();
         }
 
@@ -227,6 +238,7 @@ namespace LightMyRoom
                 rainbowTimer.Enabled = false;
                 flashTimer.Enabled = false;
                 policeTimer.Enabled = false;
+                musicTimer.Enabled = false;
                 int czerw = bunifuSlider1.Value;
                 int ziel = bunifuSlider2.Value;
                 int nieb = bunifuSlider3.Value;
@@ -244,14 +256,7 @@ namespace LightMyRoom
             wifi_btn.ForeColor = Color.FromArgb(25, 42, 86);
         }
 
-        private void themeSwitch_Click(object sender, EventArgs e)
-        {
-            if(themeSwitch.Value==false)
-            {
-               
-            }
-        }
-
+      
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
             if (Application.OpenForms["arduino"] == null)
@@ -277,7 +282,8 @@ namespace LightMyRoom
                 rainbowTimer.Enabled = true;
                 flashTimer.Enabled = false;
                 policeTimer.Enabled = false;
-                rainbowTimer.Interval = 1;
+                musicTimer.Enabled = false;
+                rainbowMusicTimer.Enabled = false;
             }
         }
 
@@ -310,6 +316,7 @@ namespace LightMyRoom
                 rainbowPanel.Visible = false;
                 flashPanel.Visible = false;
                 policePanel.Visible = false;
+                musicPanel.Visible = false;
             }
             else
             if (modeDropdown.selectedIndex == 1)
@@ -318,8 +325,8 @@ namespace LightMyRoom
                 rainbowPanel.Visible = true;
                 flashPanel.Visible = false;
                 policePanel.Visible = false;
-
-            } 
+                musicPanel.Visible = false;
+            }
             else
             if(modeDropdown.selectedIndex == 2)
             { 
@@ -327,6 +334,8 @@ namespace LightMyRoom
                 rainbowPanel.Visible = false;
                 flashPanel.Visible = true;
                 policePanel.Visible = false;
+                musicPanel.Visible = false;
+
             }
             else
             if (modeDropdown.selectedIndex == 3)
@@ -335,6 +344,16 @@ namespace LightMyRoom
                 rainbowPanel.Visible = false;
                 flashPanel.Visible = false;
                 policePanel.Visible = true;
+                musicPanel.Visible = false;
+            }
+            else
+            if(modeDropdown.selectedIndex == 4)
+            {
+                    staticPanel.Visible = false;
+                    rainbowPanel.Visible = false;
+                    flashPanel.Visible = false;
+                    policePanel.Visible = false;
+                    musicPanel.Visible = true;
             }
         }
 
@@ -398,6 +417,8 @@ namespace LightMyRoom
                 rainbowTimer.Enabled = false;
                 flashTimer.Enabled = false;
                 policeTimer.Enabled = true;
+                musicTimer.Enabled = false;
+                rainbowMusicTimer.Enabled = false;
             }
         }
 
@@ -415,6 +436,8 @@ namespace LightMyRoom
                 rainbowTimer.Enabled = false;
                 flashTimer.Enabled = true;
                 policeTimer.Enabled = false;
+                musicTimer.Enabled = false;
+                rainbowMusicTimer.Enabled = false;
             }
         }
         int pl_state = 0;
@@ -430,6 +453,125 @@ namespace LightMyRoom
             {
                 SetColor(Color.FromArgb(0, 0, 255));
                 pl_state = 0;
+            }
+        }
+
+        private void bunifuFlatButton3_Click(object sender, EventArgs e)
+        {
+            if (!isConnected)
+            {
+                DialogResult result2 = MessageBox.Show("Error: Device not connected",
+                                                       "Error",
+                                                       MessageBoxButtons.OK,
+                                                       MessageBoxIcon.Error);
+            }
+            else
+            {
+                rainbowTimer.Enabled = false;
+                flashTimer.Enabled = false;
+                policeTimer.Enabled = false;
+                musicTimer.Enabled = true;
+                rainbowMusicTimer.Enabled = false;
+            }
+        }
+
+        private void bunifuSlider4_ValueChanged(object sender, EventArgs e)
+        {
+            bunifuCustomLabel9.Text = bunifuSlider4.Value.ToString();
+            r = bunifuSlider4.Value;
+            actMusic.ProgressColor = Color.FromArgb(r, g, b);
+        }
+
+        private void bunifuSlider5_ValueChanged(object sender, EventArgs e)
+        {
+            bunifuCustomLabel7.Text = bunifuSlider5.Value.ToString();
+            g = bunifuSlider5.Value;
+            actMusic.ProgressColor = Color.FromArgb(r, g, b);
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void autostart_OnChange(object sender, EventArgs e)
+        {
+            RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (autostart.Checked == true)
+            {
+               
+                reg.SetValue("LightMeUp", Application.ExecutablePath.ToString());
+            }
+            else
+            {
+                reg.DeleteValue("LightMeUp");
+            }
+        }
+
+        private void bunifuCheckbox1_OnChange(object sender, EventArgs e)
+        {
+            if (bunifuCheckbox1.Checked == true)
+            {
+                rainbowMusicTimer.Enabled = true;
+                bunifuSlider4.Enabled = false;
+                bunifuSlider5.Enabled = false;
+                bunifuSlider6.Enabled = false;
+            }
+            else
+            {
+                rainbowMusicTimer.Enabled = false;
+                bunifuSlider4.Enabled = true;
+                bunifuSlider5.Enabled = true;
+                bunifuSlider6.Enabled = true;
+            }
+        }
+        int rainy_r = 255, rainy_g = 0, rainy_b = 0;
+        private void rainbowMusicTimer_Tick(object sender, EventArgs e)
+        {
+              
+                if (rainy_r > 0 && rainy_b == 0)
+                {
+                    rainy_r--;
+                    rainy_g++;
+                }
+                if (rainy_g > 0 && rainy_r == 0)
+                {
+                    rainy_g--;
+                    rainy_b++;
+                }
+                if (rainy_b > 0 && rainy_g == 0)
+                {
+                    rainy_b--;
+                    rainy_r++;
+                }
+        }
+
+        private void bunifuSlider6_ValueChanged(object sender, EventArgs e)
+        {
+            bunifuCustomLabel5.Text = bunifuSlider6.Value.ToString();
+            b = bunifuSlider6.Value;
+            actMusic.ProgressColor = Color.FromArgb(r, g, b);
+        }
+
+        private void musicTimer_Tick(object sender, EventArgs e)
+        {
+            if (dropDevice.SelectedItem != null)
+            {
+                var device = (MMDevice)dropDevice.SelectedItem;
+                if (bunifuCheckbox1.Checked == true)
+                {
+                    r2 = (int)(Math.Round(device.AudioMeterInformation.MasterPeakValue * rainy_r));
+                    g2 = (int)(Math.Round(device.AudioMeterInformation.MasterPeakValue * rainy_g));
+                    b2 = (int)(Math.Round(device.AudioMeterInformation.MasterPeakValue * rainy_b));
+                }
+                else
+                {
+                    r2 = (int)(Math.Round(device.AudioMeterInformation.MasterPeakValue * bunifuSlider4.Value));
+                    g2 = (int)(Math.Round(device.AudioMeterInformation.MasterPeakValue * bunifuSlider5.Value));
+                    b2 = (int)(Math.Round(device.AudioMeterInformation.MasterPeakValue * bunifuSlider6.Value));
+                } 
+                actMusic.ProgressColor = Color.FromArgb(r2, g2, b2);
+                this.SetColor(Color.FromArgb(r2, g2, b2));
             }
         }
 
@@ -464,6 +606,11 @@ namespace LightMyRoom
             else
             {
                 disconnectFromArduino();
+                rainbowTimer.Enabled = false;
+                flashTimer.Enabled = false;
+                policeTimer.Enabled = false;
+                musicTimer.Enabled = false;
+                rainbowMusicTimer.Enabled = false;
             }
         }
 
